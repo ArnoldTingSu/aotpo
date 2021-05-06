@@ -4,9 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}">
     <title>Landing</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="nav-bar">
+            {% for key, link in links.items %}
+            <a href="{{link}}">{{key}}</a>
+            {%endfor%}
+        </div>
+        <div class="main">
+            <div class="logo">
+                <img src="{% static 'content/artoff_logo.png' %}" alt="">
+            </div>
+            <div class="buttons">
+                <form action="/login">
+                    <input type="submit" value="Login" class="button">
+                </form>
+                <form action="/register">
+                    <input type="submit" value="Register" class="button">
+                </form>    
+                <form action="/hall_of_fame">
+                    <input type="submit" value="Hall of Fame" class="button">
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <span></span>
+        </div>
+    </div>
 </body>
 </html>

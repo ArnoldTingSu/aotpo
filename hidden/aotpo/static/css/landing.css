@@ -1,0 +1,58 @@
+/* take out link underlines */
+
+*{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: aqua;
+    padding: 5px 0px;
+}
+
+
+.nav-bar a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.nav-bar a:hover {
+    color:white;
+    text-decoration: underline;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo {
+    margin-top: 14%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+.button {
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 1px 2px;
+    margin: 0 5px;
+
+}
+
+
+.footer {
+    margin-top: 21%;
+    position: relative;
+    width: auto;
+    height: 100px;
+    background-color: rgb(248, 47, 47);
+}

@@ -5,19 +5,41 @@ from django.shortcuts import render, HttpResponse
 # <----------GET---------->
 #LANDING PAGE(FIRST PAGE USERS SEE)
 def landing(request):
-    return render(request, 'landing.html')
+    context = {
+        'links': {
+            'Home': '/home',
+            'Arena': '/arena',
+            'Hall of Fame': '/hall_of_fame',
+            'Logout': '/logout'
+        }
+    }
+    return render(request, 'landing.html', context)
 
 def login(request):
-    return render(request,'register.html')
+    return render(request,'login.html')
 
 def home(request):
-    return render(request,'home.html')
+    context = {
+        'links': {
+            'Home': '/home',
+            'Arena': '/arena',
+            'Hall of Fame': '/hall_of_fame',
+            'Logout': '/logout'
+        }
+    }
+    return render(request,'home.html', context)
 
-def user_profile(request):
+def user(request):
     return render(request, 'user_profile.html')
 
-def artwork_profile(request):
-    return render(request, 'artwork_profile.html')
+def artwork(request):
+    return render(request, 'artwork.html')
 
 def register(request):
     return render(request, 'register.html')
+
+def arena(request):
+    return render(request, 'arena.html')
+
+def gallery(request):
+    return render(request, 'gallery.html')

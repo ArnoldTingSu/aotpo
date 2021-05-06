@@ -4,9 +4,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
     <title>Register</title>
 </head>
 <body>
-    
+    <div id="reg_container">
+        <div class="heading">
+            <h1>Sign Up</h1>
+            <p>It's quick and easy.</p>
+        </div>
+        <div class="main">
+            <div class="app_space">
+                <img src="{%static 'content/artoff_logo.png'%}" alt="artOff Logo">
+                <h3>Faceoff with artists and share ideas on ArtOff!</h3>
+            </div>
+            <div class="register-form">
+                <form action="/register" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input">
+                        <p>First Name:</p>
+                        <input type="text" name="first_name">
+                        <p>Last Name:</p>
+                        <input type="text" name="last_name">
+                        <p>Username:</p>
+                        <input type="text" name="username">
+                        <p>E-mail:</p>
+                        <input type="text" name="email">
+                        <p>Password:</p>
+                        <input type="password" name="password">
+                        <p>Confirm Password:</p> 
+                        <input type="password" name="confirm_password">
+                        <p>Upload Profile Picture:</p>
+                        <input type="file" name="profile_pic" id='upload_file' class="aFile">
+                        <button type="submit" class="button">Create Account</button>
+                        <hr>
+                        <p>Already registered?</p>
+                </form>
+                <form action="login">
+                    <input type="submit" class="button" id="login-button" value="Login Here">
+                </form>
+                    </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span></span>
+        </div>
+    </div>
 </body>
 </html>

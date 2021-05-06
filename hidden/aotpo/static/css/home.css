@@ -1,0 +1,45 @@
+
+*{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: aqua;
+    padding: 5px 0px;
+}
+.nav-bar a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+.logo-header {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.user-ui {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border: 2px dotted red;
+    
+}
+.feed {
+    flex-grow: 2;
+    border: 2px solid black;
+}
+
+.artist-network {
+    flex-grow: 1;
+    border: 2px solid yellow;
+}

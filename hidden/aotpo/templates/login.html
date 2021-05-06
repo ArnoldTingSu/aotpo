@@ -4,9 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
     <title>Login</title>
 </head>
 <body>
-    
+    <div id="reg_container">
+        <div class="heading">
+        </div>
+        <div class="main">
+            <div class="app_space">
+                <img src="{%static 'content/artoff_logo.png'%}" alt="artOff Logo">
+                <h3>Faceoff with artists and share ideas on ArtOff!</h3>
+            </div>
+            <div class="login-form">
+                <form action="/login-post" method="POST">
+                    {% csrf_token %}
+                    <div class="input">
+                        <p>Username:</p>
+                        <input type="text" name="first_name">
+                        <p>Password:</p>
+                        <input type="password" name="last_name">
+                        
+                        <button type="submit" class="button">Login</button>
+                        <hr>
+                        <p>Not registered yet?</p>
+                </form>
+                <form action="/register" id="register-button">
+                    <input type="submit" class="button"  value="Register Here">
+                </form>
+                    </div>
+            </div>
+        </div>
+        <div class="footer">
+            <span></span>
+        </div>
+    </div>
 </body>
 </html>
