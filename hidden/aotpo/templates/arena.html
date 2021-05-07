@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/arena.css' %}">
     <title>Artwork Arena</title>
 </head>
 <body>
-    <h1>THIS IS THE ARTWORK ARENA</h1>
+    <div class="container">
+        <div class="nav-bar">
+            {% for key, link in links.items %}
+            <a href="{{link}}">{{key}}</a>
+            {%endfor%}
+        </div>
+        <div class="logo-header">
+            <a href="/"><img src="{% static 'content/artoff_logo.png' %}" height="50" alt=""></a>
+        </div>
+        <div class="main">
+            <div class="faceoff">
+                <div class="artwork" id="left">
+                
+                    <a href=""><img src="{% static 'content/girl.jpg' %}" alt="girl" width="400"></a>
+                    <p>Caption Caption Caption Caption </p>
+                    <!-- would vote/art/id -->
+                </div>
+                <div class="middle">
+                    <img src="{% static 'content/versus.png' %}" alt="vs" width="200px">
+                </div>
+                <div class="artwork" id="right">
+                
+                    <a href=""></a><img src="{% static 'content/people.jpg' %}" alt="people" width="400"></a>
+                    <p>Caption Caption Caption</p>
+                    <!-- would vote/art/id -->
+                </div>
+            </div>
+            <div class="spacing">
+                <hr>
+            </div>
+            <div class="voting">
+                 <form action="vote">
+                        <input type="submit" value="Vote" class="vote-button">
+                    </form>
+                    <div class="chat">
+                        <span></span>
+                    </div>
+                <form action="vote">
+                        <input type="submit" value="Vote" class="vote-button">
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <span></span>
+        </div>
+    </div>
+</div>
 </body>
 </html>

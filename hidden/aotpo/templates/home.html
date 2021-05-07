@@ -21,19 +21,51 @@
         <div class="main">
             <div class="user-ui">
                 <div class="small-gallery">
-                    <h3>Recent Uploads</h3>
+                    <h2>{{request.session.username}} Recent Uploads</h2>
+                    <div class="recent">
+                        <p>Image 1</p>
+                        <p>image 2</p>
+                        <p>image 3</p>
+                        <a href="/gallery">Gallery</a>
+                    </div>
                 </div>
                 <div class="artwork-upload">
-                    <p>Create Artwork</p>
+                    <h2>Create Artwork</h2>
+                    <form action="/create_art" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="input">
+                            <p>Upload Artwork:</p>
+                            <input type="file" name="art_image" id='upload_file' class="aFile">
+                            <p>Caption:</p> 
+                            <input type="text" name="caption">
+                            <button type="submit" class="button">Create Art</button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div class="feed">
-                <h1>feed</h1>
+                <h2></h2>
+              <p>images 1</p>
+              <p>images 2</p>
+              <p>images 3</p>
+              <p>images 4</p>
             </div>
-            <div class="artist-network">Artist Network</div>
+            <div class="artist-network"><h2>Artist Network</h2>
+                {{request.session.username}}
+                <p>Artist 2</p>
+                <p>Artist 3</p>
+                <p>Artist 4</p>
+                <p>Artist 5</p>
+                <p>Artist 6</p>
+                <p>Artist 7</p>
+                <p>Artist 8</p>
+                <p>Artist 9</p>
+                <p>Artist 10</p>
+            </div>
         </div>
         <div class="footer">
             <span></span>
+            <h1>downhere</h1>
         </div>
     </div>
 </body>

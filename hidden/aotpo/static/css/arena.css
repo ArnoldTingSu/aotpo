@@ -1,0 +1,72 @@
+*{
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+.nav-bar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: aqua;
+    padding: 5px 0px;
+}
+.nav-bar a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+.logo-header {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.faceoff, .artwork {
+    display: flex;
+    justify-content:space-evenly ;
+}
+
+.artwork, h1{ 
+    flex-direction: column;
+    justify-content: center;
+    vertical-align: center;
+}
+
+.artwork > p {
+    margin-top: 4px;
+    display: flex;
+    justify-content: center;
+}
+
+.middle, h1 {
+    margin: auto 0;
+}
+.vote-button {
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 1px 2px;
+    margin: 0 5px;
+}
+
+.voting {
+    display: flex;
+    justify-content: space-evenly;
+}
+.chat {
+    width: 200px;
+}
+
+.spacing {
+    margin: 30px 0px;
+}
+.button {
+    padding: 5px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 1px 2px;
+}
+
+.footer {
+    margin-top: 6.05%;
+    position: relative;
+    width: auto;
+    height: 100px;
+    background-color: rgb(248, 47, 47);
+}

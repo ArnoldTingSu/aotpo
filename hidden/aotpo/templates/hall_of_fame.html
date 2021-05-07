@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%load static %}
+    <link rel="stylesheet" href="{% static 'css/hall_of_fame.css' %}">
+    <title>Hall of Fame</title>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            {% for key, link in links.items %}
+            <a href="{{link}}">{{key}}</a>
+            {%endfor%}
+        </div>
+        <div class="logo-header">
+            <a href="/"><img src="{% static 'content/artoff_logo.png' %}" height="50" alt=""></a>
+        </div>
+        <div class="main">
+            <h1>HEAD TO HEAD</h1>
+            <div class="rankings" id="head-to-head">
+                <div class="hof_card" id="head-card-2">
+                    <div class="card-title"><img src="{% static 'content/silver.png' %}" alt="silver medal"></div>
+                    <div class="artwork" id="second-place-art"><img src="{% static 'content/artoff_logo.png' %}" width="200px" height="200px" alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: ##</a>
+                        <a href="">Username</a>
+                    </div>
+                </div>
+                <div class="hof_card" id="head-card-1">
+                    <div class="card-title"><img src="{% static 'content/gold.png' %}" alt="gold medal"></div>
+                    <div class="artwork" id="first-place-art"><img src="{% static 'content/artoff_logo.png' %}" width="200px" height="200px" alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: ##</a>
+                        <a href="">Username</a>
+                        <p>"User quote"</p>
+                    </div>
+                </div>
+                <div class="hof_card" id="head-card-3">
+                    <div class="card-title"><img src="{% static 'content/bronze.png' %}" alt="bronze medal"></div>
+                    <div class="artwork" id="third-place-art"><img src="{% static 'content/artoff_logo.png' %}"  alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: ##</a>
+                        <a href="">Username</a>
+                    </div>
+                </div>
+            </div>
+            <div class="spacer">
+                <hr>
+            </div>
+            <h1>POPULAR</h1>
+            <div class="rankings" id="popular">
+                <div class="hof_card" id="pop-card-2">
+                    <div class="card-title"><img src="{% static 'content/silver.png' %}" alt="silver medal"></div>
+                    <div class="artwork" id="second-place-art"><img src="{% static 'content/artoff_logo.png' %}" width="200px" height="200px" alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: #</a>
+                        <a href="">Username</a>
+                    </div>
+                </div>
+                <div class="hof_card" id="pop-card-1">
+                    <div class="card-title"><img src="{% static 'content/gold.png' %}" alt="gold medal"></div>
+                    <div class="artwork" id="first-place-art"><img src="{% static 'content/artoff_logo.png' %}" width="200px" height="200px" alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: ##</a>
+                        <a href="">Username</a>
+                        <p>"User Quote"</p>
+                    </div>
+                </div>
+                <div class="hof_card" id="pop-card-3">
+                    <div class="card-title"><img src="{% static 'content/bronze.png' %}" alt="bronze medal"></div>
+                    <div class="artwork" id="third-place-art"><img src="{% static 'content/artoff_logo.png' %}" width="200px" height="200px" alt=""></div>
+                    <div class="card-detail">
+                        <a href="">Likes: ##</a>
+                        <a href="">Username</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
