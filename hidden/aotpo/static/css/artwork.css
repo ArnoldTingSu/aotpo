@@ -25,7 +25,6 @@ a {
 }
 .main, .name-plate {
     display: flex;
-    flex-grow: 1;
     justify-content: space-evenly;
 }
 
@@ -38,6 +37,10 @@ img #profile-picture{
     border-radius:50%;
 }
 
+.gallery img {
+    border: 12px solid cyan;
+}
+
 .nameplate h1, .nameplate h2{
     display: flex;
     justify-content: center;
@@ -47,24 +50,44 @@ img #profile-picture{
 h1 {
     font-size: 8em;
     justify-content: center;
-    margin-top: 45px;
+    text-decoration: underline;
 }
 
 .spacer {
     margin: 20px 0;
 }
 
-.gallery {
+.gallery, .input {
     display: flex;
     flex-direction: column;
 }
 
-h2 {
-    margin: 0 auto;
+.nameplate, .profile-picture {
+    justify-content: center;
 }
 
+#title{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+h2{
+    display: flex;
+    vertical-align: center;
+}
+
+a {
+    margin-left: 4px;
+}
 .artworks {
     margin-top: 15px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.comment-section {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
 }

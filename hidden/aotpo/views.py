@@ -1,4 +1,5 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import *
 from django.contrib import messages
 import bcrypt
@@ -102,8 +103,10 @@ def artist(request, id):
 
 def artwork(request, id):
     context = {
+        'comments': Comment.objects.filter(artwork=id),
         'artwork': Art.objects.get(id=id),
         'artist': Art.objects.get(id=id).artist,
+        'other_works': Art.objects.get(id=id).artist.artworks.all()
     }
     return render(request, 'artwork.html', context)
 
@@ -137,3 +140,13 @@ def create_art(request):
     )
     print('Art Has Been Made')
     return redirect('/home')
+
+def add_comment(request, id):
+    if request.method == "POST":
+       Comment.objects.create(
+    comment = request.POST['comment'],
+    artwork= Art.objects.get(id=id),
+    user = User.objects.get(id=request.session['user_id'])
+    )
+    print('Comment Has Been Made')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

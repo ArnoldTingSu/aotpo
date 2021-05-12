@@ -21,7 +21,7 @@
         <div class="main">
             {% for art in artworks%}
             <div class="artworks">
-                <a href="artwork/{{art.id}}" class="artwork"><img src="{{art.art_image.url}}" alt="" width="200" height="200"></a>
+                <a href="/artwork/{{art.id}}" class="artwork"><img src="{{art.art_image.url}}" alt="" width="200" height="200"></a>
             </div>
             {% endfor %}
         </div>

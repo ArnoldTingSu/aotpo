@@ -10,6 +10,7 @@ urlpatterns = [
     path('artist/<int:id>', views.artist),
     path('artwork/<int:id>', views.artwork),
     path('arena', views.arena),
+    path('artwork/<int:id>/add_comment', views.add_comment),
     path('artist/<int:id>/gallery', views.gallery),
     path('hall_of_fame', views.hall_of_fame),
     path('create_art', views.create_art),
