@@ -4,9 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    {%load static %}
+    <link rel="stylesheet" href="{% static 'css/user_profile.css' %}">
+    <title>{{artist.first_name}}'s Profile</title>
 </head>
 <body>
-    <h1>Welcome to the User profile page!</h1>
-</body>
-</html>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="/home">Home</a>
+            <a href="/arena">Arena</a>
+            <a href="/hall_of_fame">Hall of Fame</a>
+            <a href="/logout">Logout</a>
+            <a href=""></a>
+        </div>
+        <div class="logo-header">
+            <a href="/"><img src="{% static 'content/artoff_logo.png' %}" height="50" alt=""></a>
+        </div>
+        <div class="main">
+            <div class="profile-picture">
+                <img src="{{artist.profile_pic.url}}" id="profile-picture" alt="profile-picture" width="400" height="400" >
+            </div>
+            <div class="nameplate">
+                <h1>{{artist.username}}</h1>
+                <h2>"{{artist.quote}}"</h2>
+            </div>
+        </div>
+        <div class="spacer">
+            <hr>
+        </div>
+        <div class="gallery">
+            <div id="title"><h2>{{artist.first_name}}'s Gallery</h2>
+            <a href="/artist/{{artist.id}}/gallery">Gallery</a></div>
+            <div class="artworks">
+                {% for art in artworks %}
+                <div class="artwork">
+                    <a href="/artwork/{{art.id}}"><img src="{{art.art_image.url}}" width="200" height="200"></a> 
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>

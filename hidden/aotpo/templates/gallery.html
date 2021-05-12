@@ -11,28 +11,19 @@
 <body>
     <div class="container">
         <div class="nav-bar">
-            {% for key, link in links.items %}
-            <a href="{{link}}">{{key}}</a>
-            {%endfor%}
+            <a href="/arena">Arena</a>
+            <a href="/hall_of_fame">Hall of Fame</a>
+            <a href="/logout">Logout</a>
         </div>
         <div class="logo-header">
             <a href="/"><img src="{% static 'content/artoff_logo.png' %}" height="50" alt=""></a>
         </div>
         <div class="main">
+            {% for art in artworks%}
             <div class="artworks">
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/silver.png' %}" alt="silver medal" width="200" height="200"></a>
-                <a href="/artwork" class="artwork"><img src="{% static 'content/artoff_logo.png' %}" alt="silver medal" width="200" height="200"></a>
+                <a href="/artwork/{{art.id}}" class="artwork"><img src="{{art.art_image.url}}" alt="" width="200" height="200"></a>
             </div>
+            {% endfor %}
         </div>
         </div>
     </div>

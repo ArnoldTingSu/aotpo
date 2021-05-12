@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artwork Profile</title>
+    {%load static %}
+    <link rel="stylesheet" href="{% static 'css/artwork.css' %}">
+    <title>{{artist.first_name}}'s Profile</title>
 </head>
 <body>
-    <h1>ARTWORK PROFILE</h1>
-</body>
-</html>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="/home">Home</a>
+            <a href="/arena">Arena</a>
+            <a href="/hall_of_fame">Hall of Fame</a>
+            <a href="/logout">Logout</a>
+            <a href=""></a>
+        </div>
+        <div class="logo-header">
+            <a href="/"><img src="{% static 'content/artoff_logo.png' %}" height="50" alt=""></a>
+        </div>
+        <div class="main">
+            <div class="profile-picture">
+                <img src="{{artwork.art_image.url}}" id="profile-picture" alt="profile-picture" width="400" height="400" >
+            </div>
+            <div class="nameplate">
+                <h1>{{artwork.caption}}</h1>
+            </div>
+            <div class="comment-section">
+                <h2>Comments</h2>
+                <form action="/artwork/{{artwork.id}}/add_comment" method="POST">
+                    {% for comment in comments %}
+                    <div class="comment">
+                        <p>{{comment.id }} -- {{comment.comment}} -{{comment.user.username}}</p> <a href="">delete</a>
+                    </div>
+                    {% endfor %}
+                    <div class="input">
+                        <input type="text" name="comment">
+                        <input type="submit" value="Add Comment">
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+        <div class="spacer">
+            <hr>
+        </div>
+        <div class="gallery">
+            <div id="title">
+                <h2>See other works in {{artist.first_name}}'s<a href="/artist/{{artist.id}}/gallery">Gallery</a></h2>
+            </div>
+            <div class="artworks">
+                {% for art in other_works %}
+                <div class="artwork">
+                    <a href="/artwork/{{art.id}}"><img src="{{art.art_image.url}}" width="200" height="200"></a> 
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>

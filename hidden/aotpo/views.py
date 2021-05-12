@@ -1,84 +1,10 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from .models import *
 from django.contrib import messages
 import bcrypt
 
 # Create your views here.
-
-# <----------GET---------->
-#LANDING PAGE(FIRST PAGE USERS SEE)
-def landing(request):
-    context = {
-        'links': {
-            'Home': '/home',
-            'Arena': '/arena',
-            'Hall of Fame': '/hall_of_fame',
-            'Logout': '/logout'
-        }
-    }
-    return render(request, 'landing.html', context)
-
-def login(request):
-    return render(request,'login.html')
-
-def home(request):
-    context = {
-        'links': {
-            'Home': '/home',
-            'Arena': '/arena',
-            'Hall of Fame': '/hall_of_fame',
-            'Logout': '/logout',
-    
-        'user': {
-            'session' : User.objects.get(id=request.session['user_id'])
-            }
-        }  
-    }  
-    return render(request,'home.html', context)
-
-def hall_of_fame(request):
-    context = {
-        'links': {
-            'Home': '/home',
-            'Arena': '/arena',
-            'Hall of Fame': '/hall_of_fame',
-            'Logout': '/logout'
-        }
-    }
-    return render(request, 'hall_of_fame.html', context)
-
-def user(request):
-    return render(request, 'user_profile.html')
-
-def artwork(request):
-    return render(request, 'artwork.html')
-
-def register(request):
-    return render(request, 'register.html')
-
-def arena(request):
-    context = {
-        'links': {
-            'Home': '/home',
-            'Arena': '/arena',
-            'Hall of Fame': '/hall_of_fame',
-            'Logout': '/logout'
-        }
-    }
-    return render(request, 'arena.html', context)
-
-def gallery(request):
-    context = {
-        'links': {
-            'Home': '/home',
-            'Arena': '/arena',
-            'Hall of Fame': '/hall_of_fame',
-            'Logout': '/logout'
-        }
-    }
-    return render(request, 'gallery.html', context)
-
-# <---------POST ---------->
 
 def register_user(request):
     #pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
@@ -106,6 +32,105 @@ def register_user(request):
     #             messages.error(request, value)
     #     else:
     #         password = request.POST['password']
+    
+
+def login_post(request):
+    if request.method == "POST":
+        user = User.objects.filter(username=request.POST['username'])
+        if user:
+            logged_user = user[0]
+            if (request.POST['password'] == logged_user.password):
+                request.session['user_id'] = logged_user.id
+                return redirect('/home')
+            messages.error(request, 'Password Does Not Match')
+        else:
+            messages.error(request, "Username Does Not Exist")
+    return redirect('/login')
+
+
+# <----------GET---------->
+
+#LANDING PAGE(FIRST PAGE USERS SEE)
+def landing(request):
+    context = {
+        'links': {
+            'Home': '/home',
+            'Arena': '/arena',
+            'Hall of Fame': '/hall_of_fame',
+        }
+    }
+    return render(request, 'landing.html', context)
+
+def login(request):
+    return render(request,'login.html')
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')
+
+def home(request):
+    if not 'user_id' in request.session:
+        return redirect('/')
+    context = {
+        "users" : User.objects.all(),
+        "artworks": Art.objects.all(),
+        "logged_user": User.objects.get(id = request.session['user_id']),
+        "logged_user_art" : User.objects.get(id = request.session['user_id']).artworks.all(),
+        "recent": Art.objects.order_by('-created_at')
+    }
+    return render(request, "home.html", context)
+
+def hall_of_fame(request):
+    context = {
+        'links': {
+            'Home': '/home',
+            'Arena': '/arena',
+            'Hall of Fame': '/hall_of_fame',
+            'Logout': '/logout'
+        }
+    }
+    return render(request, 'hall_of_fame.html', context)
+
+def artist(request, id):
+    context = {
+        'artist': User.objects.get(id=id),
+        "artworks": User.objects.get(id=id).artworks.all(),
+        "logged_user": User.objects.get(id = request.session['user_id']),
+        "logged_user_art" : User.objects.get(id = request.session['user_id']).artworks.all(),
+        "recent": Art.objects.order_by('-created_at')
+    }
+    return render(request, 'user_profile.html', context)
+
+def artwork(request, id):
+    context = {
+        'comments': Comment.objects.filter(artwork=id),
+        'artwork': Art.objects.get(id=id),
+        'artist': Art.objects.get(id=id).artist,
+        'other_works': Art.objects.get(id=id).artist.artworks.all()
+    }
+    return render(request, 'artwork.html', context)
+
+def register(request):
+    return render(request, 'register.html')
+
+def arena(request):
+    context = {
+        'left': Art.objects.order_by('?').first(),
+        'right': Art.objects.order_by('?').first()
+    }
+    return render(request, 'arena.html', context)
+
+def gallery(request, id):
+    context = {
+        'artist': User.objects.get(id=id),
+        "artworks": User.objects.get(id=id).artworks.all(),
+        }
+    return render(request, 'gallery.html', context)
+
+# <---------POST ---------->
+
+def vote(request):
+    return ('arena')
 
 def create_art(request):
     Art.objects.create(
@@ -115,3 +140,13 @@ def create_art(request):
     )
     print('Art Has Been Made')
     return redirect('/home')
+
+def add_comment(request, id):
+    if request.method == "POST":
+       Comment.objects.create(
+    comment = request.POST['comment'],
+    artwork= Art.objects.get(id=id),
+    user = User.objects.get(id=request.session['user_id'])
+    )
+    print('Comment Has Been Made')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

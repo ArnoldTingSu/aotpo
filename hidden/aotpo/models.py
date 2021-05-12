@@ -28,7 +28,7 @@ class User(models.Model):
     quote = models.CharField(max_length = 300, default = "I love art")
     email = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
-    profile_pic = models.ImageField(upload_to= "static/profile_picture")
+    profile_pic = models.ImageField(upload_to= "images/")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
@@ -42,7 +42,7 @@ class ArtManager(models.Manager):
 
 class Art(models.Model):
     caption = models.CharField(max_length = 100)
-    art_image = models.ImageField(upload_to= "aotpo/static/artwork/")
+    art_image = models.ImageField(upload_to= "images/")
     artist = models.ForeignKey(User, related_name='artworks', on_delete = models.CASCADE)
     likes = models.ManyToManyField(User, related_name='liked_posts', default=False)
     rating = models.IntegerField(default=1500)
