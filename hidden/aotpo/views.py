@@ -2,7 +2,9 @@ from django.shortcuts import render, HttpResponse, redirect, HttpResponseRedirec
 from django.http import HttpResponseRedirect
 from .models import *
 from django.contrib import messages
-import bcrypt
+import json
+import requests
+
 
 # Create your views here.
 
@@ -128,6 +130,14 @@ def gallery(request, id):
     return render(request, 'gallery.html', context)
 
 # <---------POST ---------->
+
+#implementing art from The Met
+def test(request):
+    json_response = requests.get("https://collectionapi.metmuseum.org/public/collection/v1/objects")
+    context = {
+        'json': "https://collectionapi.metmuseum.org/public/collection/v1/objects"
+    }
+    return render(request, 'test.html', context)
 
 def vote(request):
     return ('arena')
