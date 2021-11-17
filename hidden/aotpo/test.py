@@ -7,6 +7,7 @@ image = art['primaryImage']
 name = art['objectName']
 title = art['title']
 date = art['objectDate']
+era = art['period']
 
 print(response)
 
