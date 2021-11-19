@@ -1,22 +1,22 @@
 import requests
 from PIL import Image
-response = requests.get("https://collectionapi.metmuseum.org/public/collection/v1/objects/70110")
-art = response.json()
+import random
 
+
+randomInt = random.randrange(476713)
+
+response = requests.get(f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{randomInt}")
+print(f"this number is random {randomInt}")
+art = response.json()
 image = art['primaryImage']
-name = art['objectName']
+name = art['objectURL']
 title = art['title']
 date = art['objectDate']
 era = art['period']
 
-print(response)
-
-print(art)
-print(image)
+print(f"Primary image URL: {image}")
 print(name)
 print(title)
 print(date)
 print()
 
-
-img=image
