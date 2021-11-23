@@ -15,9 +15,9 @@ date = art['objectDate']
 era = art['period']
 
 print(f"Primary image URL: {image}")
-print(name)
-print(title)
-print(date)
+print(f"Image Name: {name}")
+print(f"Image Title: {title}")
+print(f" Artwork Date: {date}")
 print()
 print()
 

@@ -134,8 +134,9 @@ def gallery(request, id):
 #implementing art from The Met
 def test(request):
     json_response = requests.get("https://collectionapi.metmuseum.org/public/collection/v1/objects")
+    
     context = {
-        'json': "https://collectionapi.metmuseum.org/public/collection/v1/objects"
+        'json': json_response
     }
     return render(request, 'test.html', context)
 
