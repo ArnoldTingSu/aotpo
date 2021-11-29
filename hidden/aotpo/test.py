@@ -32,6 +32,7 @@ print(response.status_code)
 
 print(response.json())
 print()
+print()
 
 ## SORTED JSON OBJECT STRING ##
 
