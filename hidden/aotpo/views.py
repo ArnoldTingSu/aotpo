@@ -133,10 +133,10 @@ def gallery(request, id):
 
 #implementing art from The Met
 def test(request):
-    json_response = requests.get("https://collectionapi.metmuseum.org/public/collection/v1/objects")
-    
+
     context = {
-        'json': json_response
+        'json': requests.get("https://collectionapi.metmuseum.org/public/collection/v1/objects/312141"),
+        'jsonDump': json
     }
     return render(request, 'test.html', context)
 
